@@ -34,7 +34,7 @@ func (c Client) Run() error {
 	grpcServer := grpc.NewServer()
 	v1.RegisterUserServiceServer(grpcServer, &c)
 
-	log.Print("start to serve grpc")
+	log.Print("start to serve gRPC")
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Printf("failed to serve: %s\n", err)
 		return err
