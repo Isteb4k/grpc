@@ -2,7 +2,6 @@ package grpc
 
 import (
 	"context"
-	"google.golang.org/protobuf/types/known/timestamppb"
 	"grpc/server/internal/user"
 	"log"
 	"net"
@@ -92,18 +91,9 @@ func (c Client) UpdateUser(ctx context.Context, req *v1.UpdateUserRequest) (*v1.
 }
 
 func (c Client) convertUserToUserProto(u user.User) v1.User {
-	var up v1.User
-
-	up = v1.User{
+	return v1.User{
 		Id:        u.ID,
 		FirstName: u.FirstName,
 		LastName:  u.LastName,
-		CreatedAt: timestamppb.New(u.CreatedAt),
 	}
-
-	if u.UpdatedAt != nil {
-		up.UpdatedAt = timestamppb.New(*u.UpdatedAt)
-	}
-
-	return up
 }

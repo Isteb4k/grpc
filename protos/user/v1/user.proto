@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-
 package user;
 
 option go_package = "./protos/user/v1";
@@ -10,8 +8,6 @@ message User {
   string id = 1;
   string lastName = 2;
   string firstName = 3;
-  google.protobuf.Timestamp createdAt = 4;
-  google.protobuf.Timestamp updatedAt = 5;
 }
 
 service UserService {
